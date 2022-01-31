@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<DocumentationFile>MinimalHelpers.Binding.xml</DocumentationFile>
+		<Authors>Marco Minerva</Authors>
+		<Company>Marco Minerva</Company>
+		<Product>Binding Helpers for Minimal APIs</Product>
+		<Title>Binding Helpers for Minimal APIs</Title>
+		<Description>A lightweight library to automatically register all the Route Endpoints of a Minimal API project.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/marcominerva/MinimalHelpers.Binding</PackageProjectUrl>
+		<PackageIcon>Toolbox.png</PackageIcon>
+		<PackageTags>csharp visual-studio aspnetcore minimalapi utilities helpers</PackageTags>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/marcominerva/MinimalHelpers.Binding.git</RepositoryUrl>
+		<RepositoryBranch>master</RepositoryBranch>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="MinimalHelpers.Binding.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Nerdbank.GitVersioning" Version="3.4.255">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\Toolbox.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+</Project>
