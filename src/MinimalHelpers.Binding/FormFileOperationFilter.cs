@@ -1,14 +1,18 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Metadata;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace MinimalHelpers.Binding;
 
-public class OpenApiUploadOperationFilter : IOperationFilter
+public class FormFileOperationFilter : IOperationFilter
 {
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
-        var isUploadMethod = context.ApiDescription.ParameterDescriptions.Any(p => p.Name == nameof(FormFile));
-        if (isUploadMethod)
+        var acceptsFormFile = context.ApiDescription.ActionDescriptor.EndpointMetadata.OfType<IAcceptsMetadata>()
+            .Any(m => m.RequestType == typeof(IFormFile) || m.RequestType == typeof(FormFileContent));
+
+        if (acceptsFormFile)
         {
             operation.RequestBody = new OpenApiRequestBody
             {

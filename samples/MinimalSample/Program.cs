@@ -1,12 +1,11 @@
 using MinimalHelpers.Binding;
-using FormFile = MinimalHelpers.Binding.FormFile;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.OperationFilter<OpenApiUploadOperationFilter>();
+    options.OperationFilter<FormFileOperationFilter>();
 });
 
 var app = builder.Build();
@@ -20,10 +19,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPost("/file", (FormFile file) =>
+app.MapPost("/file", (FormFileContent file) =>
 {
     return Results.NoContent();
 })
-.Accepts<FormFile>("multipart/form-data");
+.Accepts<FormFileContent>("multipart/form-data");
 
 app.Run();

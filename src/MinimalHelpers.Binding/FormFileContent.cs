@@ -2,16 +2,16 @@
 
 namespace MinimalHelpers.Binding;
 
-public class FormFile
+public class FormFileContent
 {
     public IFormFile Content { get; }
 
-    public FormFile(IFormFile file)
+    public FormFileContent(IFormFile file)
     {
         Content = file;
     }
 
-    public static async ValueTask<FormFile?> BindAsync(HttpContext context)
+    public static async ValueTask<FormFileContent?> BindAsync(HttpContext context)
     {
         var request = context.Request;
         if (!request.HasFormContentType)
@@ -27,8 +27,7 @@ public class FormFile
             return null;
         }
 
-        var result = new FormFile(file);
+        var result = new FormFileContent(file);
         return result;
     }
 }
-
