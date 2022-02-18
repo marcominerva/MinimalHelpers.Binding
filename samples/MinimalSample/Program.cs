@@ -19,10 +19,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPost("/file", (FormFileContent file) =>
+app.MapPost("/file", (FormFileContentCollection file) =>
 {
     return Results.NoContent();
 })
-.Accepts<FormFileContent>("multipart/form-data");
+.Accepts<FormFileContentCollection>("multipart/form-data");
 
 app.Run();

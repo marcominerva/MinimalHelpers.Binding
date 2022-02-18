@@ -9,10 +9,15 @@ public class FormFileOperationFilter : IOperationFilter
 {
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
-        var acceptsFormFile = context.ApiDescription.ActionDescriptor.EndpointMetadata.OfType<IAcceptsMetadata>()
+        var acceptsMetadata = context.ApiDescription.ActionDescriptor.EndpointMetadata.OfType<IAcceptsMetadata>();
+
+        var acceptsFormFile = acceptsMetadata
             .Any(m => m.RequestType == typeof(IFormFile) || m.RequestType == typeof(FormFileContent));
 
-        if (acceptsFormFile)
+        var acceptsFormFileCollection = acceptsMetadata
+            .Any(m => m.RequestType == typeof(IFormFileCollection) || m.RequestType == typeof(FormFileContentCollection));
+
+        if (acceptsFormFile || acceptsFormFileCollection)
         {
             operation.RequestBody = new OpenApiRequestBody
             {
@@ -26,10 +31,18 @@ public class FormFileOperationFilter : IOperationFilter
                             Required = new HashSet<string> { "file" },
                             Properties = new Dictionary<string, OpenApiSchema>
                             {
-                                ["file"] = new OpenApiSchema()
+                                ["file"] = acceptsFormFile ? new OpenApiSchema()
                                 {
                                     Type = "string",
                                     Format = "binary"
+                                } : new OpenApiSchema()
+                                {
+                                    Type = "array",
+                                    Items = new OpenApiSchema
+                                    {
+                                        Type = "string",
+                                        Format = "binary"
+                                    }
                                 }
                             }
                         },
