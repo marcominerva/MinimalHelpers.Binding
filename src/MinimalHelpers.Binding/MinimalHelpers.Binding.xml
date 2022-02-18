@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MinimalHelpers.Binding</name>
+    </assembly>
+    <members>
+        <member name="T:MinimalHelpers.Binding.FormFileContent">
+            <summary>
+            A class that holds a file sent with the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Http.IFormFile"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>
+        </member>
+        <member name="P:MinimalHelpers.Binding.FormFileContent.Content">
+            <summary>
+            The reference to the file sent with the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>
+        </member>
+        <member name="M:MinimalHelpers.Binding.FormFileContent.BindAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Reads the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> and extract the first file sent, if any.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> that represents the current request.</param>
+            <returns>An object of type <see cref="T:MinimalHelpers.Binding.FormFileContent"/>, if the request contains a valid file; otherwise, null.</returns>
+            <seealso cref="T:MinimalHelpers.Binding.FormFileContent"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.HttpContext"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>
+        </member>
+        <member name="T:MinimalHelpers.Binding.FormFileContentCollection">
+            <summary>
+            A class that holds a collection of files sent with the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Http.IFormFileCollection"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>
+        </member>
+        <member name="P:MinimalHelpers.Binding.FormFileContentCollection.Content">
+            <summary>
+            The reference to the collection of files sent with the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>
+        </member>
+        <member name="M:MinimalHelpers.Binding.FormFileContentCollection.BindAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Reads the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> and extract all the files it contains.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> that represents the current request.</param>
+            <returns>An object of type <see cref="T:MinimalHelpers.Binding.FormFileContentCollection"/> containing the collection of files.</returns>
+            <seealso cref="T:MinimalHelpers.Binding.FormFileContentCollection"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.HttpContext"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>
+        </member>
+        <member name="T:MinimalHelpers.Binding.FormFileOperationFilter">
+            <summary>
+            An Operation Filter that allows to correctly handle file input in Swagger.
+            </summary>
+            <remarks>Remember to call the <see cref="M:Microsoft.AspNetCore.Http.OpenApiRouteHandlerBuilderExtensions.Accepts``1(Microsoft.AspNetCore.Builder.RouteHandlerBuilder,System.String,System.String[])"/> method
+            on the endpoint that requires a single or multiple file input.
+            </remarks>
+            <seealso cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/>
+        </member>
+        <member name="M:MinimalHelpers.Binding.FormFileOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
