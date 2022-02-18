@@ -8,9 +8,9 @@
 		<DocumentationFile>MinimalHelpers.Binding.xml</DocumentationFile>
 		<Authors>Marco Minerva</Authors>
 		<Company>Marco Minerva</Company>
-		<Product>Binding Helpers for Minimal APIs</Product>
+		<Product>Biding Helpers for Minimal APIs</Product>
 		<Title>Binding Helpers for Minimal APIs</Title>
-		<Description>A lightweight library to automatically register all the Route Endpoints of a Minimal API project.</Description>
+		<Description>A library that provides Binding helpers for Minimal APIs project</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/marcominerva/MinimalHelpers.Binding</PackageProjectUrl>
 		<PackageIcon>Toolbox.png</PackageIcon>

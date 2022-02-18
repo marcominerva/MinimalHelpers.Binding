@@ -5,12 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
+    // Add the Operation Filter that allows to correctly handle file input in Swagger.    
     options.OperationFilter<FormFileOperationFilter>();
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -19,9 +19,25 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPost("/file", (FormFileContentCollection file) =>
+app.MapPost("/api/single-file", (FormFileContent file) =>
 {
-    return Results.NoContent();
+    return Results.Ok(new
+    {
+        file.Content.FileName,
+        file.Content.ContentType,
+        file.Content.Length
+    });
+})
+.Accepts<FormFileContent>("multipart/form-data");
+
+app.MapPost("/api/multiple-files", (FormFileContentCollection files) =>
+{
+    return Results.Ok(files.Content.Select(file => new
+    {
+        file.FileName,
+        file.ContentType,
+        file.Length
+    }));
 })
 .Accepts<FormFileContentCollection>("multipart/form-data");
 

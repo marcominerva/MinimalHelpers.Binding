@@ -1,57 +1,50 @@
-# Minimal APIs Endpoints Registration Helper
+# Minimal APIs Binding Helpers
 
-[![GitHub Super-Linter](https://github.com/marcominerva/MinimalHelpers.Registration/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-[![Nuget](https://img.shields.io/nuget/v/MinimalHelpers.Registration)](https://www.nuget.org/packages/MinimalHelpers.Registration)
-[![Nuget](https://img.shields.io/nuget/dt/MinimalHelpers.Registration)](https://www.nuget.org/packages/MinimalHelpers.Registration)
+[![GitHub Super-Linter](https://github.com/marcominerva/MinimalHelpers.Binding/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![Nuget](https://img.shields.io/nuget/v/MinimalHelpers.Binding)](https://www.nuget.org/packages/MinimalHelpers.Binding)
+[![Nuget](https://img.shields.io/nuget/dt/MinimalHelpers.Binding)](https://www.nuget.org/packages/MinimalHelpers.Binding)
 
-A lightweight library to automatically register all the Route Endpoints of a Minimal API project.
+A library that provides Binding helpers for Minimal APIs project.
 
 **Installation**
 
-The library is available on [NuGet](https://www.nuget.org/packages/MinimalHelpers.Registration). Just search *MinimalHelpers.Registration* in the **Package Manager GUI** or run the following command in the **Package Manager Console**:
+The library is available on [NuGet](https://www.nuget.org/packages/MinimalHelpers.Binding). Just search *MinimalHelpers.Binding* in the **Package Manager GUI** or run the following command in the **Package Manager Console**:
 
-    Install-Package MinimalHelpers.Registration
+    Install-Package MinimalHelpers.Binding
 
 **Usage**
 
-Create a class to hold your route handlers and make it implementing the `IEndpointRouteHandler` interface:
+***IFormFile and IFormFileCollection binding***
 
-    public class PeopleHandler : MinimalHelpers.Registration.IEndpointRouteHandler
+Use a `FormFileContent` or `FormFileContentCollection` argument in the route handler that must receive a single file or a collection of files, than call the `Accepts` method on the endpoint definition:
+
+    app.MapPost("/api/single-file", (FormFileContent file) =>
     {
-        public void Map(IEndpointRouteBuilder endpoints)
+        return Results.Ok(new
         {
-            endpoints.MapGet("/api/people", GetList);
-            endpoints.MapGet("/api/people/{id:guid}", Get);
-            endpoints.MapPost("/api/people", Insert);
-            endpoints.MapPut("/api/people/{id:guid}", Update);
-            endpoints.MapDelete("/api/people/{id:guid}", Delete);
-        }
+            file.Content.FileName,
+            file.Content.ContentType,
+            file.Content.Length
+        });
+    })
+    .Accepts<FormFileContent>("multipart/form-data");
 
-        // ...
-    }
-
-Call the `MapEndpoints()` extension method on the **WebApplication** object inside *Program.cs* before the `Run()` method invocation:
-
-    // using MinimalHelpers.Registration;
-    app.MapEndpoints();
-
-    app.Run();
-
-By default, `MapEndpoints()` will scan the calling Assembly to search for classes that implement the `IEndpointRouteHandler` interface. If your route handlers are defined in another Assembly, you have two alternatives:
-
-- Use the `MapEndpoints()` overload that takes the Assembly to scan as argument
-- Use the `MapEndpointsFromAssemblyContaining<T>()` extension method and specify a type that is contained in the Assembly you want to scan
-
-You can also explicitly decide what types (among the ones that implement the `IRouteEndpointHandler` interface) you want to actually map, passing a predicate to the `MapEndpoints` method:
-
-    app.MapEndpoints(type =>
+    app.MapPost("/api/multiple-files", (FormFileContentCollection files) =>
     {
-        if (type.Name.StartsWith("Products"))
+        return Results.Ok(files.Content.Select(file => new
         {
-            return false;
-        }
+            file.FileName,
+            file.ContentType,
+            file.Length
+        }));
+    })
+    .Accepts<FormFileContentCollection>("multipart/form-data");
 
-        return true;
+Add the `FormFile` Operation Filter to Swagger, so that it will be able to correctly handle file input:
+
+    builder.Services.AddSwaggerGen(options =>
+    {
+        options.OperationFilter<FormFileOperationFilter>();
     });
 
 **Contribute**
