@@ -18,24 +18,24 @@ public class FormFileOperationFilter : IOperationFilter
             {
                 Content = new Dictionary<string, OpenApiMediaType>
                 {
+                    ["multipart/form-data"] = new OpenApiMediaType
                     {
-                        "multipart/form-data", new OpenApiMediaType
+                        Schema = new OpenApiSchema
                         {
-                            Schema = new OpenApiSchema
+                            Type = "object",
+                            Required = new HashSet<string> { "file" },
+                            Properties = new Dictionary<string, OpenApiSchema>
                             {
-                                Type = "object",
-                                Required = new HashSet<string>{ "file" },
-                                Properties = new Dictionary<string, OpenApiSchema>
+                                ["file"] = new OpenApiSchema()
                                 {
-                                    {
-                                        "file", new OpenApiSchema()
-                                        {
-                                            Type = "string",
-                                            Format = "binary"
-                                        }
-                                    }
+                                    Type = "string",
+                                    Format = "binary"
                                 }
                             }
+                        },
+                        Encoding = new Dictionary<string, OpenApiEncoding>
+                        {
+                            ["file"] = new OpenApiEncoding { Style = ParameterStyle.Form }
                         }
                     }
                 }

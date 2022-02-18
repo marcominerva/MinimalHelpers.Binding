@@ -2,9 +2,16 @@
 
 namespace MinimalHelpers.Binding;
 
-public class FormFileCollection : Microsoft.AspNetCore.Http.FormFileCollection
+public class FormFileContentCollection
 {
-    public static async ValueTask<FormFileCollection?> BindAsync(HttpContext context)
+    public IFormFileCollection Content { get; }
+
+    public FormFileContentCollection(IFormFileCollection files)
+    {
+        Content = files;
+    }
+
+    public static async ValueTask<FormFileContentCollection?> BindAsync(HttpContext context)
     {
 
         var request = context.Request;
@@ -21,12 +28,7 @@ public class FormFileCollection : Microsoft.AspNetCore.Http.FormFileCollection
             return null;
         }
 
-        var result = new FormFileCollection();
-        foreach (var file in files)
-        {
-            result.Add(file);
-        }
-
+        var result = new FormFileContentCollection(files);
         return result;
     }
 }
