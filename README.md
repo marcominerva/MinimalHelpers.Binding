@@ -16,7 +16,7 @@ The library is available on [NuGet](https://www.nuget.org/packages/MinimalHelper
 
 ***IFormFile and IFormFileCollection binding***
 
-Use a `FormFileContent` or `FormFileContentCollection` argument in the route handler that must receive a single file or a collection of files, than call the `Accepts` method on the endpoint definition:
+Use a `FormFileContent` or `FormFileContentCollection` argument in the route handler that must receive a single file or a collection of files, than call the corresponding `Accepts*` extension method on the endpoint definition:
 
     app.MapPost("/api/single-file", (FormFileContent file) =>
     {
@@ -27,7 +27,7 @@ Use a `FormFileContent` or `FormFileContentCollection` argument in the route han
             file.Content.Length
         });
     })
-    .Accepts<FormFileContent>("multipart/form-data");
+    .AcceptsFormFile();
 
     app.MapPost("/api/multiple-files", (FormFileContentCollection files) =>
     {
@@ -38,7 +38,7 @@ Use a `FormFileContent` or `FormFileContentCollection` argument in the route han
             file.Length
         }));
     })
-    .Accepts<FormFileContentCollection>("multipart/form-data");
+    .AcceptsFormFileCollection();
 
 Add the `FormFile` Operation Filter to Swagger, so that it will be able to correctly handle file input:
 

@@ -9,7 +9,8 @@ namespace MinimalHelpers.Binding;
 /// <summary>
 /// An Operation Filter that allows to correctly handle file input in Swagger.
 /// </summary>
-/// <remarks>Remember to call the <see cref="OpenApiRouteHandlerBuilderExtensions.Accepts{TRequest}(RouteHandlerBuilder, string, string[])"/> method
+/// <remarks>Remember to call the <see cref="RouteHandlerBuilderExtensions.AcceptsFormFile(RouteHandlerBuilder)"/> 
+/// or <see cref="RouteHandlerBuilderExtensions.AcceptsFormFileCollection(RouteHandlerBuilder)"/> methods
 /// on the endpoint that requires a single or multiple file input.
 /// </remarks>
 /// <seealso cref="IOperationFilter"/>
