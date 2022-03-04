@@ -34,7 +34,7 @@ jobs:
         path: ${{ env.PROJECT_NAME }}
         
     - name: Package
-      run: dotnet pack -c Release '${{ env.PROJECT_NAME }}/${{ env.PROJECT_FILE }}'
+      run: dotnet pack -c Release -o . '${{ env.PROJECT_NAME }}/${{ env.PROJECT_FILE }}'
       
     - name: Publish on NuGet
       run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json  
