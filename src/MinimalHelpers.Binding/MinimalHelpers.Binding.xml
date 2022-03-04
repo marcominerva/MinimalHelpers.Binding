@@ -62,5 +62,32 @@
         <member name="M:MinimalHelpers.Binding.FormFileOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
             <inheritdoc />
         </member>
+        <member name="T:MinimalHelpers.Binding.RouteHandlerBuilderExtensions">
+            <summary>
+            Provides extension methods for adding a <see cref="P:Microsoft.AspNetCore.Http.Endpoint.Metadata"/> that makes the endpoint able to receive a single or multiple file upload.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.EndpointMetadataCollection"/>
+        </member>
+        <member name="M:MinimalHelpers.Binding.RouteHandlerBuilderExtensions.AcceptsFormFile(Microsoft.AspNetCore.Builder.RouteHandlerBuilder)">
+            <summary>
+            Adds a <see cref="T:Microsoft.AspNetCore.Http.Metadata.IAcceptsMetadata"/> to <see cref="P:Microsoft.AspNetCore.Builder.EndpointBuilder.Metadata"/> for the <see cref="T:Microsoft.AspNetCore.Http.IFormFile"/> request type.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/>.</param>
+            <returns>A <see cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/> that can be used to further customize the endpoint.</returns>
+            <seealso cref="T:Microsoft.AspNetCore.Builder.EndpointBuilder"/>
+            <seealso cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.EndpointMetadataCollection"/>
+        </member>
+        <member name="M:MinimalHelpers.Binding.RouteHandlerBuilderExtensions.AcceptsFormFileCollection(Microsoft.AspNetCore.Builder.RouteHandlerBuilder)">
+            <summary>
+            Adds a <see cref="T:Microsoft.AspNetCore.Http.Metadata.IAcceptsMetadata"/> to <see cref="P:Microsoft.AspNetCore.Builder.EndpointBuilder.Metadata"/> for the <see cref="T:Microsoft.AspNetCore.Http.IFormFileCollection"/> request type.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/>.</param>
+            <returns>A <see cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/> that can be used to further customize the endpoint.</returns>
+            <seealso cref="T:Microsoft.AspNetCore.Builder.EndpointBuilder"/>
+            <seealso cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/>
+            <seealso cref="T:Microsoft.AspNetCore.Http.EndpointMetadataCollection"/>
+        </member>
     </members>
 </doc>

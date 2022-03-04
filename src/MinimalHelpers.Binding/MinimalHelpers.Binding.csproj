@@ -14,7 +14,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/marcominerva/MinimalHelpers.Binding</PackageProjectUrl>
 		<PackageIcon>Toolbox.png</PackageIcon>
-		<PackageTags>csharp visual-studio aspnetcore minimalapi utilities helpers</PackageTags>
+		<PackageTags>csharp visual-studio aspnetcore minimalapi binding utilities helpers</PackageTags>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/marcominerva/MinimalHelpers.Binding.git</RepositoryUrl>
 		<RepositoryBranch>master</RepositoryBranch>

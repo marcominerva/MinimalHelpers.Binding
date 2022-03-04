@@ -28,7 +28,7 @@ app.MapPost("/api/single-file", (FormFileContent file) =>
         file.Content.Length
     });
 })
-.Accepts<FormFileContent>("multipart/form-data");
+.AcceptsFormFile();
 
 app.MapPost("/api/multiple-files", (FormFileContentCollection files) =>
 {
@@ -39,6 +39,6 @@ app.MapPost("/api/multiple-files", (FormFileContentCollection files) =>
         file.Length
     }));
 })
-.Accepts<FormFileContentCollection>("multipart/form-data");
+.AcceptsFormFileCollection();
 
 app.Run();
