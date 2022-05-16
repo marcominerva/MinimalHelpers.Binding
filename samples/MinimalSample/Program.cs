@@ -6,7 +6,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     // Add the Operation Filter that allows to correctly handle file input in Swagger.    
-    options.OperationFilter<FormFileOperationFilter>();
+    options.AddFormFile();
 });
 
 var app = builder.Build();

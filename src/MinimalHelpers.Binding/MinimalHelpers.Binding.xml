@@ -50,15 +50,6 @@
             <seealso cref="T:Microsoft.AspNetCore.Http.HttpContext"/>
             <seealso cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>
         </member>
-        <member name="T:MinimalHelpers.Binding.FormFileOperationFilter">
-            <summary>
-            An Operation Filter that allows to correctly handle file input in Swagger.
-            </summary>
-            <remarks>Remember to call the <see cref="M:Microsoft.AspNetCore.Http.OpenApiRouteHandlerBuilderExtensions.Accepts``1(Microsoft.AspNetCore.Builder.RouteHandlerBuilder,System.String,System.String[])"/> method
-            on the endpoint that requires a single or multiple file input.
-            </remarks>
-            <seealso cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/>
-        </member>
         <member name="M:MinimalHelpers.Binding.FormFileOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
             <inheritdoc />
         </member>
@@ -88,6 +79,28 @@
             <seealso cref="T:Microsoft.AspNetCore.Builder.EndpointBuilder"/>
             <seealso cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/>
             <seealso cref="T:Microsoft.AspNetCore.Http.EndpointMetadataCollection"/>
+        </member>
+        <member name="T:MinimalHelpers.Binding.SwaggerExtensions">
+            <summary>
+            Provides an extension method for adding an Operation Filter that allows to correctly handle file input in Swagger.
+            </summary>
+            <remarks>Remember to call the <see cref="M:MinimalHelpers.Binding.RouteHandlerBuilderExtensions.AcceptsFormFile(Microsoft.AspNetCore.Builder.RouteHandlerBuilder)"/> 
+            or <see cref="M:MinimalHelpers.Binding.RouteHandlerBuilderExtensions.AcceptsFormFileCollection(Microsoft.AspNetCore.Builder.RouteHandlerBuilder)"/> methods
+            on the endpoint that requires a single or multiple file input.
+            </remarks>
+            <seealso cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/>
+            <seealso cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/>
+        </member>
+        <member name="M:MinimalHelpers.Binding.SwaggerExtensions.AddFormFile(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            Adds an Operation Filter that allows to correctly handle file input in Swagger.
+            </summary>
+            <remarks>Remember to call the <see cref="M:MinimalHelpers.Binding.RouteHandlerBuilderExtensions.AcceptsFormFile(Microsoft.AspNetCore.Builder.RouteHandlerBuilder)"/> 
+            or <see cref="M:MinimalHelpers.Binding.RouteHandlerBuilderExtensions.AcceptsFormFileCollection(Microsoft.AspNetCore.Builder.RouteHandlerBuilder)"/> methods
+            on the endpoint that requires a single or multiple file input.
+            </remarks>
+            <seealso cref="T:Microsoft.AspNetCore.Builder.RouteHandlerBuilder"/>
+            <seealso cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/>
         </member>
     </members>
 </doc>

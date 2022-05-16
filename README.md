@@ -4,7 +4,7 @@
 [![Nuget](https://img.shields.io/nuget/v/MinimalHelpers.Binding)](https://www.nuget.org/packages/MinimalHelpers.Binding)
 [![Nuget](https://img.shields.io/nuget/dt/MinimalHelpers.Binding)](https://www.nuget.org/packages/MinimalHelpers.Binding)
 
-A library that provides Binding helpers for Minimal APIs project.
+A library that provides Binding helpers for Minimal API projects.
 
 **Installation**
 
@@ -44,7 +44,7 @@ Add the `FormFile` Operation Filter to Swagger, so that it will be able to corre
 
     builder.Services.AddSwaggerGen(options =>
     {
-        options.OperationFilter<FormFileOperationFilter>();
+        options.AddFormFile();
     });
 
 **Contribute**
