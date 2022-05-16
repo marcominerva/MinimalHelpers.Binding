@@ -10,7 +10,7 @@
 		<Company>Marco Minerva</Company>
 		<Product>Biding Helpers for Minimal APIs</Product>
 		<Title>Binding Helpers for Minimal APIs</Title>
-		<Description>A library that provides Binding helpers for Minimal APIs project</Description>
+		<Description>A library that provides Binding helpers for Minimal API projects</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/marcominerva/MinimalHelpers.Binding</PackageProjectUrl>
 		<PackageIcon>Toolbox.png</PackageIcon>
@@ -30,11 +30,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Nerdbank.GitVersioning" Version="3.4.255">
+		<PackageReference Include="Nerdbank.GitVersioning" Version="3.5.104">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>

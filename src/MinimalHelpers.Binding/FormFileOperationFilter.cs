@@ -1,20 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Metadata;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace MinimalHelpers.Binding;
 
-/// <summary>
-/// An Operation Filter that allows to correctly handle file input in Swagger.
-/// </summary>
-/// <remarks>Remember to call the <see cref="RouteHandlerBuilderExtensions.AcceptsFormFile(RouteHandlerBuilder)"/> 
-/// or <see cref="RouteHandlerBuilderExtensions.AcceptsFormFileCollection(RouteHandlerBuilder)"/> methods
-/// on the endpoint that requires a single or multiple file input.
-/// </remarks>
-/// <seealso cref="IOperationFilter"/>
-public class FormFileOperationFilter : IOperationFilter
+internal class FormFileOperationFilter : IOperationFilter
 {
     /// <inheritdoc />
     public void Apply(OpenApiOperation operation, OperationFilterContext context)

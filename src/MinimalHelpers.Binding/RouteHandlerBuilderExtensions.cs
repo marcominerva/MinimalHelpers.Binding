@@ -11,6 +11,8 @@ namespace MinimalHelpers.Binding;
 /// <seealso cref="EndpointMetadataCollection"/>
 public static class RouteHandlerBuilderExtensions
 {
+    private const string MultipartFormData = "multipart/form-data";
+
     /// <summary>
     /// Adds a <see cref="IAcceptsMetadata"/> to <see cref="EndpointBuilder.Metadata"/> for the <see cref="IFormFile"/> request type.
     /// </summary>
@@ -20,7 +22,7 @@ public static class RouteHandlerBuilderExtensions
     /// <seealso cref="RouteHandlerBuilder"/>
     /// <seealso cref="EndpointMetadataCollection"/>
     public static RouteHandlerBuilder AcceptsFormFile(this RouteHandlerBuilder builder)
-        => builder.Accepts<IFormFile>("multipart/form-data");
+        => builder.Accepts<IFormFile>(MultipartFormData);
 
     /// <summary>
     /// Adds a <see cref="IAcceptsMetadata"/> to <see cref="EndpointBuilder.Metadata"/> for the <see cref="IFormFileCollection"/> request type.
@@ -31,5 +33,5 @@ public static class RouteHandlerBuilderExtensions
     /// <seealso cref="RouteHandlerBuilder"/>
     /// <seealso cref="EndpointMetadataCollection"/>
     public static RouteHandlerBuilder AcceptsFormFileCollection(this RouteHandlerBuilder builder)
-        => builder.Accepts<IFormFileCollection>("multipart/form-data");
+        => builder.Accepts<IFormFileCollection>(MultipartFormData);
 }
