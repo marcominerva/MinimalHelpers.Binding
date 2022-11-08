@@ -1,5 +1,7 @@
 # Minimal APIs Binding Helpers
 
+> This repository is not maintained anymore. Support for IForm and IFormFile binding in Minimal APIs has been added in NET 7.0.
+
 [![GitHub Super-Linter](https://github.com/marcominerva/MinimalHelpers.Binding/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 [![Nuget](https://img.shields.io/nuget/v/MinimalHelpers.Binding)](https://www.nuget.org/packages/MinimalHelpers.Binding)
 [![Nuget](https://img.shields.io/nuget/dt/MinimalHelpers.Binding)](https://www.nuget.org/packages/MinimalHelpers.Binding)
